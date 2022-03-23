@@ -5497,8 +5497,6 @@ class App extends React.Component<AppProps, AppState> {
             separator,
             typeof this.props.gridModeEnabled === "undefined" &&
               actionToggleGridMode,
-            typeof this.props.zenModeEnabled === "undefined" &&
-              actionToggleZenMode,
             typeof this.props.viewModeEnabled === "undefined" &&
               actionToggleViewMode,
             actionToggleStats,
