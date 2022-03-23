@@ -5456,13 +5456,7 @@ class App extends React.Component<AppProps, AppState> {
     const elements = this.scene.getElements();
 
     const options: ContextMenuOption[] = [];
-    if (probablySupportsClipboardBlob && elements.length > 0) {
-      options.push(actionCopyAsPng);
-    }
 
-    if (probablySupportsClipboardWriteText && elements.length > 0) {
-      options.push(actionCopyAsSvg);
-    }
     if (type === "canvas") {
       const viewModeOptions = [
         ...options,
@@ -5499,15 +5493,6 @@ class App extends React.Component<AppProps, AppState> {
                 contextItemLabel: "labels.paste",
               },
             this.deviceType.isMobile && navigator.clipboard && separator,
-            probablySupportsClipboardBlob &&
-              elements.length > 0 &&
-              actionCopyAsPng,
-            probablySupportsClipboardWriteText &&
-              elements.length > 0 &&
-              actionCopyAsSvg,
-            ((probablySupportsClipboardBlob && elements.length > 0) ||
-              (probablySupportsClipboardWriteText && elements.length > 0)) &&
-              separator,
             actionSelectAll,
             separator,
             typeof this.props.gridModeEnabled === "undefined" &&
