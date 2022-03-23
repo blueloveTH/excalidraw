@@ -10,10 +10,10 @@ export interface Language {
   rtl?: boolean;
 }
 
-export const defaultLang = { code: "en", label: "English" };
+export const defaultLang = { code: "zh-CN", label: "简体中文" };
 
 const allLanguages: Language[] = [
-  { code: "zh-CN", label: "简体中文" },
+  { code: "en", label: "English" },
   { code: "zh-TW", label: "繁體中文" },
 ].concat([defaultLang]);
 
