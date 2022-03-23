@@ -4,6 +4,8 @@ on:
     branches:
       - master
 
+permissions: write-all
+
 jobs:
   push_to_registry:
     name: Build production image
@@ -26,3 +28,12 @@ jobs:
           push: true
           tags: |
             ghcr.io/blueloveth/excalidraw:production
+      - name: Get artifacts
+        run: |
+          container_id=$(docker run -itd ghcr.io/blueloveth/excalidraw:production)
+          docker cp $container_id:/usr/share/nginx/html ./www
+      - name: Publish to github page
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: gh-pages
+          folder: www
