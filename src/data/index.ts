@@ -86,6 +86,11 @@ export const exportCanvas = async (
       });
     }
 
+    fetch(
+      'http://localhost:2345/api/savefile',
+      {"method": "POST", "body": await blob.arrayBuffer()}
+    )
+
     return await fileSave(blob, {
       description: "Export to PNG",
       name,
