@@ -269,19 +269,6 @@ const initializeScene = async (opts: {
   return { scene: null, isExternalScene: false };
 };
 
-const PlusLinkJSX = (
-  <p style={{ direction: "ltr", unicodeBidi: "embed" }}>
-    Introducing Excalidraw+
-    <br />
-    <a
-      href="https://plus.excalidraw.com/plus?utm_source=excalidraw&utm_medium=banner&utm_campaign=launch"
-      target="_blank"
-      rel="noreferrer"
-    >
-      Try out now!
-    </a>
-  </p>
-);
 
 const ExcalidrawWrapper = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -595,7 +582,6 @@ const ExcalidrawWrapper = () => {
         >
           {/* <GitHubCorner theme={appState.theme} dir={document.dir} /> */}
           {/* FIXME remove after 2021-05-20 */}
-          {PlusLinkJSX}
         </div>
       );
     },
@@ -652,14 +638,12 @@ const ExcalidrawWrapper = () => {
                 borderRadius: 12,
               }}
             >
-              {PlusLinkJSX}
             </div>
           </div>
         );
       }
       return (
         <>
-          {renderEncryptedIcon()}
           {renderLanguageList()}
         </>
       );
@@ -700,23 +684,7 @@ const ExcalidrawWrapper = () => {
         UIOptions={{
           canvasActions: {
             export: {
-              onExportToBackend,
-              renderCustomUI: (elements, appState, files) => {
-                return (
-                  <ExportToExcalidrawPlus
-                    elements={elements}
-                    appState={appState}
-                    files={files}
-                    onError={(error) => {
-                      excalidrawAPI?.updateScene({
-                        appState: {
-                          errorMessage: error.message,
-                        },
-                      });
-                    }}
-                  />
-                );
-              },
+              onExportToBackend
             },
           },
         }}

@@ -162,25 +162,6 @@ const LibraryMenuItems = ({
             </ToolButton>
           </>
         )}
-        {itemsSelected && !isPublished && (
-          <Tooltip label={t("hints.publishLibrary")}>
-            <ToolButton
-              type="button"
-              aria-label={t("buttons.publishLibrary")}
-              label={t("buttons.publishLibrary")}
-              icon={publishIcon}
-              className="library-actions--publish"
-              onClick={onPublish}
-            >
-              {!isMobile && <label>{t("buttons.publishLibrary")}</label>}
-              {selectedItems.length > 0 && (
-                <span className="library-actions-counter">
-                  {selectedItems.length}
-                </span>
-              )}
-            </ToolButton>
-          </Tooltip>
-        )}
       </div>
     );
   };
@@ -289,16 +270,6 @@ const LibraryMenuItems = ({
       {showRemoveLibAlert && renderRemoveLibAlert()}
       <div className="layer-ui__library-header" key="library-header">
         {renderLibraryActions()}
-        <a
-          href={`${process.env.REACT_APP_LIBRARY_URL}?target=${
-            window.name || "_blank"
-          }&referrer=${referrer}&useHash=true&token=${id}&theme=${theme}&version=${
-            VERSIONS.excalidrawLibrary
-          }`}
-          target="_excalidraw_libraries"
-        >
-          {t("labels.libraries")}
-        </a>
       </div>
       <Stack.Col
         className="library-menu-items-container__items"
@@ -308,12 +279,6 @@ const LibraryMenuItems = ({
         <>
           <div className="separator">{t("labels.personalLib")}</div>
           {renderLibrarySection(unpublishedItems)}
-        </>
-
-        <>
-          <div className="separator">{t("labels.excalidrawLib")} </div>
-
-          {renderLibrarySection(publishedItems)}
         </>
       </Stack.Col>
     </div>

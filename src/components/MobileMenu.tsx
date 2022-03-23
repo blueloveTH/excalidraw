@@ -157,16 +157,7 @@ export const MobileMenu = ({
     return (
       <>
         {actionManager.renderAction("clearCanvas")}
-        {actionManager.renderAction("loadScene")}
-        {renderJSONExportDialog()}
         {renderImageExportDialog()}
-        {onCollabButtonClick && (
-          <CollabButton
-            isCollaborating={isCollaborating}
-            collaboratorCount={appState.collaborators.size}
-            onClick={onCollabButtonClick}
-          />
-        )}
         {
           <BackgroundPickerAndDarkModeToggle
             actionManager={actionManager}
