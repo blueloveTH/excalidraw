@@ -5554,8 +5554,6 @@ class App extends React.Component<AppProps, AppState> {
                 contextItemLabel: "labels.paste",
               },
             this.deviceType.isMobile && separator,
-            ...options,
-            separator,
             actionCopyStyles,
             actionPasteStyles,
             separator,
