@@ -192,14 +192,6 @@ const ImageExportModal = ({
         >
           PNG
         </ExportButton>
-        <ExportButton
-          color="red"
-          title={t("buttons.exportToSvg")}
-          aria-label={t("buttons.exportToSvg")}
-          onClick={() => onExportToSvg(exportedElements)}
-        >
-          SVG
-        </ExportButton>
       </Stack.Row>
     </div>
   );

@@ -37,7 +37,7 @@ export const exportCanvas = async (
   if (elements.length === 0) {
     throw new Error(t("alerts.cannotExportEmptyCanvas"));
   }
-  if (type === "svg" || type === "clipboard-svg") {
+  if (type === "svg") {
     const tempSvg = await exportToSvg(
       elements,
       {
@@ -50,28 +50,17 @@ export const exportCanvas = async (
       },
       files,
     );
-    if (type === "svg") {
 
-      let blob = new Blob([tempSvg.outerHTML], { type: MIME_TYPES.svg });
+    let blob = new Blob([tempSvg.outerHTML], { type: MIME_TYPES.svg });
 
-      fetch(
-        'http://localhost:2345/api/savefile',
-        {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
-      )
+    fetch(
+      'http://localhost:2345/api/savefile',
+      {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors", headers: {
+        "filename": name + '.svg'
+      }}
+    )
 
-      return await fileSave(
-        blob,
-        {
-          description: "Export to SVG",
-          name,
-          extension: "svg",
-          fileHandle,
-        },
-      );
-    } else if (type === "clipboard-svg") {
-      await copyTextToSystemClipboard(tempSvg.outerHTML);
-      return;
-    }
+    return;
   }
 
   const tempCanvas = await exportToCanvas(elements, appState, files, {
@@ -96,23 +85,11 @@ export const exportCanvas = async (
 
     fetch(
       'http://localhost:2345/api/savefile',
-      {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
+      {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors", headers: {
+        "filename": name + '.png'
+      }}
     )
 
-    return await fileSave(blob, {
-      description: "Export to PNG",
-      name,
-      extension: "png",
-      fileHandle,
-    });
-  } else if (type === "clipboard") {
-    try {
-      await copyBlobToClipboardAsPng(blob);
-    } catch (error: any) {
-      if (error.name === "CANVAS_POSSIBLY_TOO_BIG") {
-        throw error;
-      }
-      throw new Error(t("alerts.couldNotCopyToClipboard"));
-    }
+    return;
   }
 };
