@@ -30,7 +30,6 @@ jobs:
         run: |
           container_id=$(docker run -itd ghcr.io/blueloveth/excalidraw:production)
           docker cp $container_id:/usr/share/nginx/html ./www
-          echo 'excalidraw.guyouclub.app' > ./www/CNAME
       - name: Publish to github page
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:

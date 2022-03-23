@@ -180,7 +180,6 @@ export const SelectedShapeActions = ({
             {!deviceType.isMobile && renderAction("deleteSelectedElements")}
             {renderAction("group")}
             {renderAction("ungroup")}
-            {showLinkIcon && renderAction("hyperlink")}
           </div>
         </fieldset>
       )}
@@ -230,6 +229,8 @@ export const ShapesSwitcher = ({
   return (
     <>
       {SHAPES.map(({ value, icon, key }, index) => {
+        if(value == 'image') return (<span></span>);
+        
         const label = t(`toolBar.${value}`);
         const letter = key && (typeof key === "string" ? key : key[0]);
         const shortcut = letter

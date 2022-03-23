@@ -97,54 +97,8 @@ const LibraryMenuItems = ({
       : t("buttons.resetLibrary");
     return (
       <div className="library-actions">
-        {(!itemsSelected || !isMobile) && (
-          <ToolButton
-            key="import"
-            type="button"
-            title={t("buttons.load")}
-            aria-label={t("buttons.load")}
-            icon={load}
-            onClick={() => {
-              importLibraryFromJSON(library)
-                .then(() => {
-                  // Close and then open to get the libraries updated
-                  setAppState({ isLibraryOpen: false });
-                  setAppState({ isLibraryOpen: true });
-                })
-                .catch(muteFSAbortError)
-                .catch((error) => {
-                  setAppState({ errorMessage: error.message });
-                });
-            }}
-            className="library-actions--load"
-          />
-        )}
         {!!items.length && (
           <>
-            <ToolButton
-              key="export"
-              type="button"
-              title={t("buttons.export")}
-              aria-label={t("buttons.export")}
-              icon={exportToFileIcon}
-              onClick={async () => {
-                const libraryItems = itemsSelected
-                  ? items
-                  : await library.loadLibrary();
-                saveLibraryAsJSON(libraryItems)
-                  .catch(muteFSAbortError)
-                  .catch((error) => {
-                    setAppState({ errorMessage: error.message });
-                  });
-              }}
-              className="library-actions--export"
-            >
-              {selectedItems.length > 0 && (
-                <span className="library-actions-counter">
-                  {selectedItems.length}
-                </span>
-              )}
-            </ToolButton>
             <ToolButton
               key="reset"
               type="button"

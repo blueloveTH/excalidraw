@@ -149,7 +149,6 @@ export const MobileMenu = ({
     if (viewModeEnabled) {
       return (
         <>
-          {renderJSONExportDialog()}
           {renderImageExportDialog()}
         </>
       );
@@ -157,8 +156,6 @@ export const MobileMenu = ({
     return (
       <>
         {actionManager.renderAction("clearCanvas")}
-        {actionManager.renderAction("loadScene")}
-        {renderJSONExportDialog()}
         {renderImageExportDialog()}
         {
           <BackgroundPickerAndDarkModeToggle

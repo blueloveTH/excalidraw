@@ -13,12 +13,12 @@ export interface Language {
 export const defaultLang = { code: "zh-CN", label: "简体中文" };
 
 const allLanguages: Language[] = [
-  { code: "en", label: "English" },
+  defaultLang,
   { code: "zh-TW", label: "繁體中文" },
-].concat([defaultLang]);
+  { code: "en", label: "English" },
+];
 
 export const languages: Language[] = allLanguages
-  .sort((left, right) => (left.label > right.label ? 1 : -1))
   .filter(
     (lang) =>
       (percentages as Record<string, number>)[lang.code] >=

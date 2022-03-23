@@ -295,8 +295,8 @@ class App extends React.Component<AppProps, AppState> {
   unmounted: boolean = false;
   actionManager: ActionManager;
   deviceType: DeviceType = {
-    isMobile: false,
-    isTouchScreen: false,
+    isMobile: true,
+    isTouchScreen: true,
   };
   detachIsMobileMqHandler?: () => void;
 
