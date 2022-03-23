@@ -29,7 +29,6 @@ import {
   actionUnbindText,
   actionBindText,
   actionUngroup,
-  actionLink,
 } from "../actions";
 import { createRedoAction, createUndoAction } from "../actions/actionHistory";
 import { ActionManager } from "../actions/manager";
@@ -5575,7 +5574,6 @@ class App extends React.Component<AppProps, AppState> {
             maybeFlipHorizontal && actionFlipHorizontal,
             maybeFlipVertical && actionFlipVertical,
             (maybeFlipHorizontal || maybeFlipVertical) && separator,
-            actionLink.contextItemPredicate(elements, this.state) && actionLink,
             actionDuplicateSelection,
             actionDeleteSelected,
           ],
