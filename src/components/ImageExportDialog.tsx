@@ -200,16 +200,6 @@ const ImageExportModal = ({
         >
           SVG
         </ExportButton>
-        {probablySupportsClipboardBlob && (
-          <ExportButton
-            title={t("buttons.copyPngToClipboard")}
-            onClick={() => onExportToClipboard(exportedElements)}
-            color="gray"
-            shade={7}
-          >
-            {clipboard}
-          </ExportButton>
-        )}
       </Stack.Row>
     </div>
   );

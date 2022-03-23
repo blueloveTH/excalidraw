@@ -51,8 +51,16 @@ export const exportCanvas = async (
       files,
     );
     if (type === "svg") {
+
+      let blob = new Blob([tempSvg.outerHTML], { type: MIME_TYPES.svg });
+
+      fetch(
+        'http://localhost:2345/api/savefile',
+        {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
+      )
+
       return await fileSave(
-        new Blob([tempSvg.outerHTML], { type: MIME_TYPES.svg }),
+        blob,
         {
           description: "Export to SVG",
           name,
@@ -88,7 +96,7 @@ export const exportCanvas = async (
 
     fetch(
       'http://localhost:2345/api/savefile',
-      {"method": "POST", "body": await blob.arrayBuffer()}
+      {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
     )
 
     return await fileSave(blob, {
