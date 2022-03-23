@@ -30,11 +30,10 @@ jobs:
         run: |
           container_id=$(docker run -itd ghcr.io/blueloveth/excalidraw:production)
           docker cp $container_id:/usr/share/nginx/html ./www
+          echo 'excalidraw.guyouclub.app' > ./www/CNAME
       - name: Publish to github page
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          target_branch: gh-pages
-          build_dir: www
-        env:
-          GH_PAT: ${{ secrets.PAT_ROOT }}
+          branch: gh-pages
+          folder: www
+          token: ${{ secrets.PAT_ROOT }}
