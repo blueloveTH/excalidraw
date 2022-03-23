@@ -624,21 +624,6 @@ const ExcalidrawWrapper = () => {
               <legend>{t("labels.language")}</legend>
               {renderLanguageList()}
             </fieldset>
-            {/* FIXME remove after 2021-05-20 */}
-            <div
-              style={{
-                width: "24ch",
-                fontSize: "0.7em",
-                textAlign: "center",
-                marginTop: isTinyDevice ? 16 : undefined,
-                marginLeft: "auto",
-                marginRight: isTinyDevice ? "auto" : undefined,
-                padding: "4px 2px",
-                border: "1px dashed #aaa",
-                borderRadius: 12,
-              }}
-            >
-            </div>
           </div>
         );
       }
