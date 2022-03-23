@@ -101,8 +101,8 @@
     "image.js": "./static/js/image.b8dc8f76.chunk.js",
     "image.js.map": "./static/js/image.b8dc8f76.chunk.js.map",
     "main.css": "./static/css/main.4ccc178a.chunk.css",
-    "main.js": "./static/js/main.8ae031bc.chunk.js",
-    "main.js.map": "./static/js/main.8ae031bc.chunk.js.map",
+    "main.js": "./static/js/main.804fcb96.chunk.js",
+    "main.js.map": "./static/js/main.804fcb96.chunk.js.map",
     "pwacompat.js": "./static/js/pwacompat.437ff870.chunk.js",
     "pwacompat.js.map": "./static/js/pwacompat.437ff870.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.fd796889.js",
@@ -139,6 +139,6 @@
     "static/js/runtime-main.fd796889.js",
     "static/js/54.7fb0079a.chunk.js",
     "static/css/main.4ccc178a.chunk.css",
-    "static/js/main.8ae031bc.chunk.js"
+    "static/js/main.804fcb96.chunk.js"
   ]
 }
