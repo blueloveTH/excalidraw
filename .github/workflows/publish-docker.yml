@@ -36,3 +36,8 @@ jobs:
           branch: gh-pages
           folder: www
           token: ${{ secrets.PAT_ROOT }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: www
+          path: www/
