@@ -54,7 +54,7 @@ export const exportCanvas = async (
     let blob = new Blob([tempSvg.outerHTML], { type: MIME_TYPES.svg });
 
     fetch(
-      'http://localhost:2345/api/savefile?filename=' +  name + '.svg',
+      'https://localhost.bluel.fun:2345/api/savefile?filename=' +  name + '.svg',
       {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
     )
 
@@ -82,7 +82,7 @@ export const exportCanvas = async (
     }
 
     fetch(
-      'http://localhost:2345/api/savefile?filename=' +  name + '.png',
+      'https://localhost.bluel.fun:2345/api/savefile?filename=' +  name + '.png',
       {"method": "POST", "body": await blob.arrayBuffer(), "mode": "no-cors"}
     )
 
